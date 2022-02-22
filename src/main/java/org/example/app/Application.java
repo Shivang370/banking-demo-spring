@@ -15,7 +15,13 @@ public class Application {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         CustomerService service = context.getBean("customerService", CustomerService.class);
+        //with prototype we will have different service ID's
+        /*CustomerService service1 = context.getBean("customerService", CustomerService.class);
+        CustomerService service2 = context.getBean("customerService", CustomerService.class);
 
+        System.out.println(service);
+        System.out.println(service1);
+        System.out.println(service2);*/
         List<Customer> customers = service.getAllCustomer();
         customers.forEach(System.out::println);
     }
