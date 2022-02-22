@@ -1,7 +1,6 @@
 package org.example.service;
 
 import org.example.model.Customer;
-import org.example.repository.CustomerReositoryDB;
 import org.example.repository.CustomerRepository;
 
 import java.util.List;
@@ -14,7 +13,7 @@ public class DefaultCustomerService implements CustomerService{
 
     //Passing the repository using dependency
     //Injecting the repository using constructor...as repository is a dependency
-    public DefaultCustomerService(CustomerReositoryDB repository)
+    public DefaultCustomerService(CustomerRepository repository)
     {
         this.repository=repository;
     }
