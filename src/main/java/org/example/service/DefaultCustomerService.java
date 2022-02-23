@@ -9,32 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//@Service("customerService")
-//@Component
+@Service("customerService")
+
 public class DefaultCustomerService implements CustomerService{
-    //private CustomerRepositoryDB repository=new CustomerRepositoryDB();
-    //private CustomerRepositoryStub repository=new CustomerRepositoryStub();
-    //Primary is must for qualifier & autowire annotation at repository side but vice versa is not true ..just by passing primary we can do the thing
-    //@Autowired
-    //@Qualifier("stub")
+
+    @Autowired
     private CustomerRepository repository;
-
-    //Passing the repository using dependency
-    //Injecting the repository using constructor...as repository is a dependency
-
-    //With Autowiring we dont require the constructor spring will take care of it...but with only primary we require it
-//    public DefaultCustomerService(CustomerRepository repository)
-//    {
-//
-//        this.repository=repository;
-//    }
-
-//    //With xml Configuration we need a constructor with one argument for constructor-args tag
-//    public DefaultCustomerService(CustomerRepository repository)
-//        {
-//
-//        this.repository=repository;
-//    }
 
     //Setter Injection
     public void setCustomerRepository(CustomerRepository repository)
