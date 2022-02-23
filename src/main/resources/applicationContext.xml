@@ -7,8 +7,8 @@
 <!--    <bean name="customerRepository" class="org.example.repository.CustomerRepositoryStub" primary="true"/>-->
     <bean name="customerRepository" class="org.example.repository.CustomerRepositoryDB" />
 
-<!--    Using bytype autowires to the setterinjection then the name of setter does not matter ...instantiation is done by spring & type of customerRepository is identified by spring-->
-    <bean name="customerService" class="org.example.service.DefaultCustomerService" autowire="byType">
+<!--      When autowiring is done by name the name of the setter matters inside defaultCustomer Service-->
+    <bean name="customerService" class="org.example.service.DefaultCustomerService" autowire="byName">
 <!--        Constructor has an index 0 as it has one argument that tells about the customerRepository...& the reference goes to the bean name customerRepository & chooses Stub/DB-->
 <!--        <constructor-arg index="0" ref="customerRepository" />-->
 
