@@ -10,8 +10,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
-@ComponentScan({"org.example"})
-@Configuration
+//In case of XML Configuration we are not required with the appconfig class all things are done in applicationcontext.xml file
+//@ComponentScan({"org.example"})
+//@Configuration
 public class AppConfig {
 
     //It is autowiring...using @ComponentSan({"org.example"})..@service("customerService")...@repository()

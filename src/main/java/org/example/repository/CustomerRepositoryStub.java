@@ -8,8 +8,8 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 
-@Repository("stub")
-@Primary
+//@Repository("stub")
+//@Primary
 public class CustomerRepositoryStub implements  CustomerRepository{
     @Override
     public List<Customer> findAll() {

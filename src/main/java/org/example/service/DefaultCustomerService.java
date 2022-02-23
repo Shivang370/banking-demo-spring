@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service("customerService")
+//@Service("customerService")
 //@Component
 public class DefaultCustomerService implements CustomerService{
     //private CustomerRepositoryDB repository=new CustomerRepositoryDB();
     //private CustomerRepositoryStub repository=new CustomerRepositoryStub();
     //Primary is must for qualifier & autowire annotation at repository side but vice versa is not true ..just by passing primary we can do the thing
-    @Autowired
-    @Qualifier("stub")
+    //@Autowired
+    //@Qualifier("stub")
     private CustomerRepository repository;
 
     //Passing the repository using dependency
@@ -28,6 +28,11 @@ public class DefaultCustomerService implements CustomerService{
 //
 //        this.repository=repository;
 //    }
+    public DefaultCustomerService(CustomerRepository repository)
+        {
+
+        this.repository=repository;
+    }
     public List<Customer> getAllCustomer()
     {
 
