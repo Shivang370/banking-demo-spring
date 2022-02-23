@@ -28,11 +28,22 @@ public class DefaultCustomerService implements CustomerService{
 //
 //        this.repository=repository;
 //    }
-    public DefaultCustomerService(CustomerRepository repository)
-        {
 
+//    //With xml Configuration we need a constructor with one argument for constructor-args tag
+//    public DefaultCustomerService(CustomerRepository repository)
+//        {
+//
+//        this.repository=repository;
+//    }
+
+    //Setter Injection
+    public void setCustomerRepository(CustomerRepository repository)
+    {
         this.repository=repository;
     }
+    public DefaultCustomerService() {}
+
+
     public List<Customer> getAllCustomer()
     {
 

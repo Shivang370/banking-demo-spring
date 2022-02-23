@@ -4,10 +4,15 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="customerRepository" class="org.example.repository.CustomerRepositoryDB" primary="true" />
+    <bean name="customerRepository" class="org.example.repository.CustomerRepositoryStub" primary="true" />
 
     <bean name="customerService" class="org.example.service.DefaultCustomerService">
-        <constructor-arg index="0" ref="customerRepository" />
+<!--        Constructor has an index 0 as it has one argument that tells about the customerRepository...& the reference goes to the bean name customerRepository & chooses Stub/DB-->
+<!--        <constructor-arg index="0" ref="customerRepository" />-->
+<!--        Now we are using the property method as repository is an attribute of default customer service so we are using a setter for it first by having the default customer service being -->
+<!--        instantiated then calling the setter ...It is a great way when we do not want to change the implementation much rather want to just add the spring part to it-->
+        <property name="customerRepository" ref="customerRepository" />
+<!--        If we use other name other than repository like customer Repository it wont work fine-->
     </bean>
 
 </beans>
