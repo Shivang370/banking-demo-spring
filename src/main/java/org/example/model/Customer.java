@@ -1,15 +1,20 @@
 package org.example.model;
 
-public class Customer {
-    private String id;
-    private String name;
-    private String city;
+import javax.persistence.*;
 
-    public Customer(String id, String name, String city) {
-        this.id = id;
-        this.name = name;
-        this.city = city;
-    }
+//Entity does not belong to Spring it is from java enterprise ..we need to specify that it fetches data from customers table
+@Entity(name="customers")
+public class Customer {
+
+    @Id//It is for stating that it is a primary key
+    @GeneratedValue(strategy=GenerationType.IDENTITY)//It is for the auto-increment part of customer_id
+    @Column(name="customer_id")
+    private String id;
+    private String name;//They have same name as in customers database
+    private String city;//They have same name as in customers database
+
+    //We just need to add the default constructor
+    public Customer(){}
     public String getId() {
         return id;
     }

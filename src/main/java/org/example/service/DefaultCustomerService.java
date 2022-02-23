@@ -16,25 +16,18 @@ public class DefaultCustomerService implements CustomerService{
     @Autowired
     private CustomerRepository repository;
 
+    public DefaultCustomerService() {}
+
     //Setter Injection
     public void setCustomerRepository(CustomerRepository repository)
     {
         this.repository=repository;
     }
-    public DefaultCustomerService() {}
-
 
     public List<Customer> getAllCustomer()
     {
 
         return repository.findAll();
-    }
-    //To have customers with star
-    public List<Customer> getAllCustomerwithstar()
-    {
-        return repository.findAll().stream()
-                .map(c->new Customer(c.getId(),"*****"+c.getName()+"*****",c.getCity()))
-                .collect(Collectors.toList());
     }
 
 }
