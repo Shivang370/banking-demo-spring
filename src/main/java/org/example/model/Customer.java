@@ -9,16 +9,16 @@ public class Customer {
     @Id//It is for stating that it is a primary key
     @GeneratedValue(strategy=GenerationType.IDENTITY)//It is for the auto-increment part of customer_id
     @Column(name="customer_id")
-    private String id;
+    private Long id;//Type Migration of id is done using refactoring
     private String name;//They have same name as in customers database
     private String city;//They have same name as in customers database
 
     //We just need to add the default constructor
     public Customer(){}
-    public String getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getName() {
