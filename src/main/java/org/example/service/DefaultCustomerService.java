@@ -33,9 +33,14 @@ public class DefaultCustomerService implements CustomerService{
     public Customer getCustomer(Long id)
     {
         Optional<Customer> optionalCustomer=repository.findById(id);
-                Customer customer=optionalCustomer.get();
+        //Using lambda Expression ..Reference method...one can also use optionalcustomer.ispresent for checking
+        return optionalCustomer.orElseGet(Customer::new);
+    }
 
-        return customer;
+    @Override
+    public void deleteCustomer(Long id) {
+        repository.deleteById(id);
+
     }
 
 }
