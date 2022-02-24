@@ -9,12 +9,12 @@ public class Customer {
 
     @Id//It is for stating that it is a primary key
     @GeneratedValue(strategy=GenerationType.IDENTITY)//It is for the auto-increment part of customer_id
-    @Column(name="customer_id")//It is done as we do not have the same column name 
+    @Column(name="customer_id")//It is done as we do not have the same column name
     private Long id;
     private String name;
     private String city;
     private Date date_of_birth;
-    private int status;
+    private Integer status;
     private String zipcode;
 
     //We just need to add the default constructor
