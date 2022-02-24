@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/customers")//URL remains general for all the functions update ,delete, create....To follow REST API Standards we do not create multiple urls
-//Just add verb with type of method
+@RequestMapping("/api/customers")
 public class CustomersController {
     @Autowired
     private CustomerService customerService;
