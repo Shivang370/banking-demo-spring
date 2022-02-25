@@ -15,11 +15,11 @@ public class CustomersController {
     @Autowired
     private CustomerService customerService;
 
-    //@GetMapping
-    //public List<Customer> getAllCustomers()
-    //{
-     //   return customerService.getAllCustomer();
-   // }
+    @GetMapping
+    public List<Customer> getAllCustomers()
+    {
+        return customerService.getAllCustomer();
+    }
 
     @RequestMapping("{id}")
     public ResponseEntity<Customer> getCustomer(@PathVariable Long id)
@@ -32,5 +32,11 @@ public class CustomersController {
     public void deleteCustomer(@PathVariable Long id)
     {
            customerService.deleteCustomer(id);
+    }
+    //API URL remains same with request mapping it then detects post mapping takes a request body makes a new instance of customer with the data in the body & new id assigned to it
+    @PostMapping
+    public Customer saveCustomer(@RequestBody Customer customer)
+    {
+        return customerService.saveCustomer(customer);
     }
 }

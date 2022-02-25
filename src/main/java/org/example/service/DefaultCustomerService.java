@@ -42,31 +42,19 @@ public class DefaultCustomerService implements CustomerService{
         throw new ResponseStatusException(HttpStatus.NOT_FOUND,"customer not found");
     }
 
-    //We can also delete the customer & show the output on postman
-//    @Override
-//    public ResponseEntity<Customer> deleteCustomer(Long id) {
-//        Optional<Customer> optionalCustomer=repository.findById(id);
-//        //Using lambda Expression ..Reference method...one can also use optionalcustomer.ispresent for checking
-//        if(optionalCustomer.isPresent())
-//        {
-//            ResponseEntity response=new ResponseEntity<>( optionalCustomer.get(),HttpStatus.OK);
-//            repository.deleteById(id);
-//            return  response;
-//
-//        }
-////        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        throw new ResponseStatusException(HttpStatus.NOT_FOUND,"customer not found");
-//
-//
-//    }
-    //Instead of using ispresent we can also use response entity to collect & then check for status code
+
     public  void deleteCustomer(Long id)
     {
         ResponseEntity<Customer> customer =getCustomer(id);
         Optional<Customer> optionalCustomer=repository.findById(id);
-        if(customer.getStatusCode().is4xxClientError())
+        if(customer.getStatusCode().is4xxClientError())//Checking for particular status code
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"customer not found");
         repository.deleteById(id);
+    }
+    @Override
+    public Customer saveCustomer(Customer customer)
+    {
+        return repository.saveAndFlush(customer);//It will add to the database & commit the changes
     }
 
 
