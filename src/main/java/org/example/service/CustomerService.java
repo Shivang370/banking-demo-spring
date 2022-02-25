@@ -12,6 +12,6 @@ public interface CustomerService {
           void deleteCustomer(Long id);
           Customer saveCustomer(Customer customer);
 
-    Customer updateCustomer(Long id, Customer customer);
+    ResponseEntity<Customer> updateCustomer(Long id, Customer customer);
 }
 

@@ -57,12 +57,12 @@ public class DefaultCustomerService implements CustomerService{
     }
 
     @Override
-    public Customer updateCustomer(Long id, Customer customer) {
+    public ResponseEntity<Customer> updateCustomer(Long id, Customer customer) {
         ResponseEntity<Customer> responseEntity=getCustomer(id);
         if(responseEntity.getStatusCode().is4xxClientError())
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Invalid Customer ID !!");
         Customer existingCustomer=responseEntity.getBody();
         BeanUtils.copyProperties(customer,existingCustomer,"id");//Here customer is the requestbody & existing customer is having all parameters ...we are just ignoring the id so that new record does not gets created
-        return repository.saveAndFlush(existingCustomer);//we can also ignore multiple fields else we have to set for each entity in update customer if bean utils is not present
+        return new ResponseEntity<>(repository.saveAndFlush(existingCustomer), HttpStatus.OK);//we can also ignore multiple fields else we have to set for each entity in update customer if bean utils is not present
     }
 }
