@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +39,8 @@ public class DefaultCustomerService implements CustomerService{
         //Using lambda Expression ..Reference method...one can also use optionalcustomer.ispresent for checking
         if(optionalCustomer.isPresent())
             return new ResponseEntity<>(optionalCustomer.get(),HttpStatus.OK);
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND,"customer not found");
     }
 
     @Override
