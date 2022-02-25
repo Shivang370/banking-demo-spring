@@ -31,6 +31,6 @@ public class CustomersController {
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     public void deleteCustomer(@PathVariable Long id)
     {
-         customerService.deleteCustomer(id);
+           customerService.deleteCustomer(id);
     }
 }
